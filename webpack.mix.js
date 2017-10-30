@@ -14,7 +14,7 @@ mix.webpackConfig({
             cacheId: 'farm-attacks',
             filename: 'service-worker.js',
             staticFileGlobs: ['public/**/*.{css,eot,svg,ttf,woff,woff2,js,html}'],
-            minify: false,
+            minify: true,
             stripPrefix: 'public/',
             handleFetch: true,
             dynamicUrlToDependencies: {

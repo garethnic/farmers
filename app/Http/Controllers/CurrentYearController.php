@@ -127,6 +127,24 @@ class CurrentYearController extends Controller
     }
 
     /**
+     * Get data for the current year
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getData(Request $request)
+    {
+        $year = date('Y');
+
+        $model = $this->model->findBy('year', $year);
+
+        return response()->json([
+            'assaults' => $model->assaults,
+            'murders' => $model->murders
+        ]);
+    }
+
+    /**
      * Send push notifications
      *
      * @param $request

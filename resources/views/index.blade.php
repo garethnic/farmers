@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <meta name="description" content="Keeping track of farmers lost due to violence in South Africa">
+        <meta name="keywords" content="farm,murders,farm murders,farm attacks,assaults">
+        <meta name="author" content="Gareth Nicholson">
+
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -28,80 +32,11 @@
             <div class="row">
                 <farmer></farmer>
             </div>
-            <div class="row">
+            <div class="row mt-4 ml-1">
                 <notification></notification>
             </div>
         </div>
 
-        <script>
-           /* if ('serviceWorker' in navigator && 'PushManager' in window) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-                        // Registration was successful
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                        /!*askPermission();
-                        const subscribeOptions = {
-                            userVisibleOnly: true,
-                            applicationServerKey: urlBase64ToUint8Array(
-                                publicKey
-                            )
-                        };
-
-                        registration.pushManager.subscribe(subscribeOptions);*!/
-                    }, function(err) {
-                        // registration failed :(
-                        console.log('ServiceWorker registration failed: ', err);
-                    }).then(function (pushSubscription) {
-                        /!*console.log('Received PushSubscription: ', JSON.stringify(pushSubscription));
-
-                        const subscriptionObject = {
-                            endpoint: pushSubscription.endpoint,
-                            keys: {
-                                p256dh: pushSubscription.getKeys('p256dh'),
-                                auth: pushSubscription.getKeys('auth')
-                            }
-                        };
-
-                        sendSubscriptionToBackEnd(subscriptionObject);
-
-                        return pushSubscription;*!/
-                    });
-                });
-            }*/
-
-            /*self.addEventListener('push', function () {
-                "use strict";
-                console.log('ServiceWorker | Push Received');
-
-                const title = 'Farm Attack';
-                const options = {
-                    body: 'Another farmer has left',
-                    /!*icon: './icons/icon-32.png',
-                    badge: './icons/icon-72.png',*!/
-                    vibrate: [500, 110, 500],
-                    sound: './sounds/9mm/mp3/9_mm.mp3',
-                }
-
-                event.waitUntil(self.registration.showNotification(title, options));
-            });
-
-            function askPermission() {
-                return new Promise(function(resolve, reject) {
-                    const permissionResult = Notification.requestPermission(function(result) {
-                        resolve(result);
-                    });
-
-                    if (permissionResult) {
-                        permissionResult.then(resolve, reject);
-                    }
-                })
-                .then(function(permissionResult) {
-                    if (permissionResult !== 'granted') {
-                        throw new Error('We weren\'t granted permission.');
-                    }
-                });
-            }*/
-        </script>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

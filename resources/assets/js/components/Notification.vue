@@ -3,7 +3,7 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <button type="button" class="btn btn-info" :disabled="toggleButton" v-on:click="buttonClick">{{ buttonText }}</button>
+                    <button type="button" class="btn btn-sm btn-info" :disabled="toggleButton" v-on:click="buttonClick">{{ buttonText }}</button>
                 </div>
             </div>
         </section>

@@ -10,6 +10,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('/create-new-year', 'CurrentYearController@newYear');
     Route::post('/add-new-assault', 'CurrentYearController@newAssault');
     Route::post('/add-new-murder', 'CurrentYearController@newMurder');
+
+    Route::get('/get-data', 'CurrentYearController@getData');
 });
 
 Auth::routes();

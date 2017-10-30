@@ -11,6 +11,12 @@ window.Vue = require('vue');
 
 /*var VueTouch = require('vue-touch')
 Vue.use(VueTouch, {name: 'v-touch'})*/
+import * as localforage from 'localforage';
+
+localforage.config({
+    driver: localforage.INDEXEDDB,
+    name: 'farm_attacks'
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
