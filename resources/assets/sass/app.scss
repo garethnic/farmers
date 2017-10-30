@@ -1,0 +1,32 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap-reboot.scss";
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+// Page Layout
+@import "layout/page";
+
+h1 {
+  font-family: $header-font;
+  font-weight: 400;
+  font-size: 4.5em;
+}
+.numbers {
+  font-family: $numbers-font;
+  font-weight: 700;
+}
+.descriptor {
+  font-family: $header-font;
+  font-weight: 700;
+}
+
+
