@@ -2,10 +2,10 @@
     <main>
         <section>
             <div class="container">
-                <div class="row mt-5 mx-auto justify-content-center align-content-center">
+                <div class="row mt-2 mx-auto justify-content-center align-content-center">
                     <div class="col text-center">
                         <h1 class="heading-text">Farm Attacks</h1>
-                        <h4>in South Africa, {{ year }}</h4>
+                        <h4>in {{ year }}</h4>
                     </div>
                 </div>
             </div>
@@ -13,7 +13,7 @@
 
         <section>
             <div class="container h-100 mx-auto d-flex">
-                <div class="row mt-5 mx-auto">
+                <div class="row mt-3 mx-auto">
                     <div class="col text-center">
                         <div class="container d-flex flex-column">
                             <div class="row mx-auto">
@@ -23,7 +23,7 @@
                                 <div class="col descriptor">Murders</div>
                             </div>
                         </div>
-                        <div class="container mt-3 d-flex flex-column">
+                        <div class="container mt-2 d-flex flex-column">
                             <div class="row mx-auto">
                                 <div class="col numbers">{{ assaults }}</div>
                             </div>
