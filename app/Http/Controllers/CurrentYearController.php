@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Jobs\SendNotifications;
 use Minishlink\WebPush\WebPush;
 use Illuminate\Support\Facades\Log;
 use App\Models\Contracts\Repositories\HistoryRepository;
@@ -153,27 +155,21 @@ class CurrentYearController extends Controller
     private function sendNotification($request)
     {
         $subs = $this->subscription->all();
-        $push = new WebPush();
 
-        $auth = [
-            'VAPID' => [
-                'subject' => $request->getHost(),
-                'publicKey' => env('PUSH_MESSAGE_PUBLIC_KEY'),
-                'privateKey' => env('PUSH_MESSAGE_PRIVATE_KEY'),
+        $data = [
+            0 => $subs,
+            1 => [
+                    'VAPID' => [
+                    'subject' => $request->getHost(),
+                    'publicKey' => env('PUSH_MESSAGE_PUBLIC_KEY'),
+                    'privateKey' => env('PUSH_MESSAGE_PRIVATE_KEY'),
+                ]
             ]
         ];
 
-        foreach ($subs as $sub) {
-            $push->sendNotification(
-                $sub['endpoint'],
-                null,
-                $sub['p256dh'],//env('PUSH_MESSAGE_PUBLIC_KEY'),
-                $sub['auth'],
-                true,
-                ['TTL' => 5000, 'urgency' => 'high'],
-                $auth
-            );
-        }
+        SendNotifications::dispatch($data)->delay(Carbon::now()->addMinutes(2));
+
+        return true;
     }
 
     /**

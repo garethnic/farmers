@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-6">
             <h2>History</h2>
+            <p>Subscriber count: <strong>{{ number_format($subscriptions) }}</strong></p>
             <table class="table table-striped table-bordered table-responsive-md">
                 <thead>
                 <th scope="col">Year</th>
