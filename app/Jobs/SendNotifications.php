@@ -37,16 +37,14 @@ class SendNotifications implements ShouldQueue
     {
         $push = new WebPush();
 
-        foreach ($this->data[0] as $sub) {
-            $push->sendNotification(
-                $sub['endpoint'],
-                null,
-                $sub['p256dh'],
-                $sub['auth'],
-                true,
-                ['TTL' => 5000, 'urgency' => 'high'],
-                $this->data[1]
-            );
-        }
+        $push->sendNotification(
+            $this->data[1]['endpoint'],
+            null,
+            $this->data[1]['p256dh'],
+            $this->data[1]['auth'],
+            true,
+            ['TTL' => 5000, 'urgency' => 'high'],
+            $this->data[0]
+        );
     }
 }

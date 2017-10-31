@@ -157,9 +157,8 @@ class CurrentYearController extends Controller
         $subs = $this->subscription->all();
 
         $data = [
-            0 => $subs,
-            1 => [
-                    'VAPID' => [
+            0 => [
+                'VAPID' => [
                     'subject' => $request->getHost(),
                     'publicKey' => env('PUSH_MESSAGE_PUBLIC_KEY'),
                     'privateKey' => env('PUSH_MESSAGE_PRIVATE_KEY'),
@@ -167,7 +166,11 @@ class CurrentYearController extends Controller
             ]
         ];
 
-        SendNotifications::dispatch($data)->delay(Carbon::now()->addMinutes(2));
+        foreach ($subs as $sub) {
+            $data[] = $sub;
+
+            SendNotifications::dispatch($data)->delay(Carbon::now()->addMinutes(1));
+        }
 
         return true;
     }
