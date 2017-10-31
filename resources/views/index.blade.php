@@ -48,15 +48,14 @@
     </head>
     <body>
         <div class="container-fluid h-100" id="app">
-            <div class="row">
-                <farmer></farmer>
-            </div>
             <div class="row mt-4 ml-1">
                 <notification></notification>
             </div>
+            <div class="row">
+                <farmer></farmer>
+            </div>
         </div>
 
-	<script src="{{ mix('js/app.js') }}"></script>
-
+	    <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
