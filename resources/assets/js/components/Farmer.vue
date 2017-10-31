@@ -5,7 +5,7 @@
                 <div class="row mt-5 mx-auto justify-content-center align-content-center">
                     <div class="col text-center">
                         <h1 class="heading-text">Farm Attacks</h1>
-                        <h4>{{ year }}</h4>
+                        <h4>in South Africa, {{ year }}</h4>
                     </div>
                 </div>
             </div>

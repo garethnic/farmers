@@ -21,7 +21,7 @@
                 isSubscribed: false,
                 toggleButton: false,
                 swRegistration: null,
-                buttonText: 'Enable Push Notifications',
+                buttonText: 'Receive Notifications',
                 applicationKey: urlB64ToUint8Array(window.messageKey),
             }
         },
@@ -57,10 +57,10 @@
                         let isSubscribed = !(subscription === null);
 
                         if (isSubscribed) {
-                            this.buttonText = 'Disable Push Messaging';
+                            this.buttonText = 'Disable Notifications';
                             this.isSubscribed = true;
                         } else {
-                            this.buttonText = 'Enable Push Messaging';
+                            this.buttonText = 'Receive Notifications';
                         }
 
                         this.updateBtn();
@@ -76,10 +76,10 @@
                 }
 
                 if (this.isSubscribed) {
-                    this.buttonText = 'Disable Push Messaging';
+                    this.buttonText = 'Disable Notifications';
                     console.log('User IS subscribed.');
                 } else {
-                    this.buttonText = 'Enable Push Messaging';
+                    this.buttonText = 'Receive Notifications';
                     console.log('User is NOT subscribed.');
                 }
 
@@ -97,18 +97,6 @@
             updateSubscriptionOnServer(subscription) {
                 console.log('Performing update on server', subscription);
                 if (subscription) {
-                    /*fetch('/api/save-subscription/', {
-                        method: 'post',
-                        body: JSON.stringify(subscription),
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
-                        }
-                    }).then(function(response) {
-                        return response.json();
-                    }).catch(function (err) {
-                        return err;
-                    })*/
                     window.axios.post('/api/save-subscription/', {
                         body: JSON.stringify(subscription),
                         headers: { 'Content-Type': 'application/json' }
