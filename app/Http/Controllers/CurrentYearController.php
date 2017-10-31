@@ -169,7 +169,7 @@ class CurrentYearController extends Controller
         foreach ($subs as $sub) {
             $data[] = $sub;
 
-            SendNotifications::dispatch($data)//->delay(Carbon::now()->addMinutes(1));
+            SendNotifications::dispatch($data);//->delay(Carbon::now()->addMinutes(1));
         }
 
         return true;
