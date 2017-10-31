@@ -26,6 +26,16 @@
                 window.messageKey = '{{ env('PUSH_MESSAGE_PUBLIC_KEY') }}';
             })();
         </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97079954-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-97079954-2');
+        </script>
     </head>
     <body>
         <div class="container-fluid h-100" id="app">
@@ -38,16 +48,6 @@
         </div>
 
 	<script src="{{ mix('js/app.js') }}"></script>
-
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97079954-2"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-97079954-2');
-        </script>
 
     </body>
 </html>
