@@ -5,9 +5,7 @@ self.addEventListener('push', function(event) {
         icon: 'images/icons/icon-512x512.png',
         badge: 'images/icons/icon-128x128.png',
         vibrate: [500,110,500,110],
-        sound: '/sounds/9mm/mp3/9_mm.mp3',
-        tag: 'renotify',
-        renotify: true
+        sound: '/sounds/9mm/mp3/9_mm.mp3'
     };
 
     event.waitUntil(self.registration.showNotification(title, options));
