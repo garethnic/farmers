@@ -3,7 +3,16 @@
         <section>
             <div class="container">
                 <div class="row">
-                    <button type="button" class="btn btn-sm btn-info" :disabled="toggleButton" v-on:click="buttonClick">{{ buttonText }}</button>
+                    <button
+                            type="button"
+                            class="btn btn-sm btn-info"
+                            :disabled="toggleButton"
+                            v-on:click="buttonClick"
+                            data-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Be notified when an attack has occurred">
+                        {{ buttonText }}
+                    </button>
                 </div>
             </div>
         </section>
