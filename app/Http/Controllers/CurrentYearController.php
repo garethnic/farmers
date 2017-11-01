@@ -58,7 +58,7 @@ class CurrentYearController extends Controller
             $prevYear = (int) $year - 1;
             $model = $this->model->findBy('year', $prevYear);
 
-            $this->model->create([
+            $this->history->create([
                 'year' => $prevYear,
                 'assaults' => $model->assaults,
                 'murders' => $model->murders,
