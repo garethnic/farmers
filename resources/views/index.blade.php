@@ -54,6 +54,13 @@
             <div class="row">
                 <farmer></farmer>
             </div>
+
+            <div class="row justify-content-center">
+                <div class="form-text text-muted mb-2"><small>Not affiliated but supporting the cause.</small></div>
+                <div class="col-md-6 mt-3">
+                    <a class="twitter-timeline" href="https://twitter.com/FarmAttacks?ref_src=twsrc%5Etfw">Tweets by FarmAttacks</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+                </div>
+            </div>
         </div>
 
 	    <script src="{{ mix('js/app.js') }}"></script>
