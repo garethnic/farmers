@@ -60,6 +60,25 @@ class SubscriptionController extends Controller
         ]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+        $body = json_decode($request->get('body'));
+
+        $model = $this->model->findBy('auth', $body->keys->auth);
+
+        $model->delete();
+
+        return response()->json(true, 200, [
+            'Content-Type' => 'application/json'
+        ]);
+    }
+
     public function sendNotifications(Request $request)
     {
         $subs = $this->model->all();
@@ -118,17 +137,6 @@ class SubscriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
         //
     }

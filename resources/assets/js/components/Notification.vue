@@ -80,7 +80,7 @@
                     this.buttonText = 'Push Messaging Blocked.';
                     this.isSubscribed = false;
                     this.toggleButton = false;
-                    this.updateSubscriptionOnServer(null);
+                    this.updateSubscriptionOnServer(null, false);
                     return;
                 }
 
@@ -103,9 +103,9 @@
                     this.subscribeUser();
                 }
             },
-            updateSubscriptionOnServer(subscription) {
+            updateSubscriptionOnServer(subscription, $status) {
                 console.log('Performing update on server', subscription);
-                if (subscription) {
+                if ($status) {
                     window.axios.post('/api/save-subscription/', {
                         body: JSON.stringify(subscription),
                         headers: { 'Content-Type': 'application/json' }
@@ -117,7 +117,17 @@
                         console.log('Error subscribing', error);
                     });
                 } else {
-                    this.updateBtn();
+                    window.axios.post('/api/remove-subscription/', {
+                        body: JSON.stringify(subscription),
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(function (response) {
+                        this.updateBtn();
+                        console.log('Successful subscription', response)
+                    })
+                    .catch(function (error) {
+                        console.log('Error subscribing', error);
+                    });
                 }
             },
             subscribeUser () {
@@ -135,7 +145,7 @@
             performSubscribe (subscription) {
                 console.log('User is subscribed.');
 
-                this.updateSubscriptionOnServer(subscription);
+                this.updateSubscriptionOnServer(subscription, true);
 
                 this.isSubscribed = true;
 
@@ -143,18 +153,15 @@
             },
             unsubscribeUser () {
                 this.swRegistration.pushManager.getSubscription()
-                    .then(function(subscription) {
+                    .then(subscription => {
                         if (subscription) {
+                            this.performUnsubscribe(subscription);
                             return subscription.unsubscribe();
                         }
-                    })
-                    .catch(function(error) {
-                        console.log('Error unsubscribing', error);
-                    })
-                    .then(() => this.performUnsubscribe());
+                    });
             },
-            performUnsubscribe() {
-                this.updateSubscriptionOnServer(null);
+            performUnsubscribe(subscription) {
+                this.updateSubscriptionOnServer(subscription, false);
 
                 console.log('User is unsubscribed.');
 
